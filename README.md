@@ -1,7 +1,14 @@
 # LLM-RBDO 项目说明
 
-- 项目目标：结合大型语言模型（LLM）与工程仿真，进行可靠性约束的设计优化（Reliability-Based Design Optimization, RBDO），并以二维喷嘴为代表案例，实现从几何建模、网格生成到求解与结果提取的自动化流程。
-- 参考论文：请见 `d:\LLM_RBDO\article.pdf`，README 仅提供运行与结构说明，技术细节、模型假设与数学推导以论文为准。
+**摘要（English）**
+Large language models (LLMs) have demonstrated remarkable in-context learning (ICL) capabilities, enabling flexible utilization of limited historical information to play pivotal roles in reasoning, problem-solving, and complex pattern recognition tasks. Inspired by the successful applications of LLMs in multiple domains, this article proposes a generative design approach by leveraging the ICL capabilities of LLMs with the iterative search mechanisms of metaheuristic algorithms for solving reliability-based design optimization (RBDO) problems. In detail, Kriging surrogate modeling is employed to replace the expensive simulations, and thus Monte Carlo simulation (MCS) can be used to approximate the probability of failure for design alternatives. Then, an RBDO-informed LLM prompt is designed to dynamically provide critical information to the LLMs, which enables the rapid generation of new high-quality design points that satisfy the reliability constraints while improving design efficiency. With the LLMs as a design generator, the RBDO is an iterative process to obtain feasible design solutions with improved performance. With the Deepseek-V3 model, three case studies are used to demonstrate the performance of the proposed approach for solving RBDO problems. The results indicate that the proposed LLM-based generative RBDO approach successfully identifies feasible solutions that meet reliability constraints while achieving a comparable convergence rate compared to traditional genetic algorithms.
+
+**摘要（中文）**
+大型语言模型（LLM）展现出卓越的上下文学习（ICL）能力，能够灵活利用有限的历史信息，在推理、问题解决和复杂模式识别任务中发挥关键作用。受 LLM 在多个领域成功应用的启发，本文提出了一种生成式设计方法，该方法结合了 LLM 的 ICL 能力和元启发式算法的迭代搜索机制，用于解决基于可靠性的设计优化（RBDO）问题。具体而言，本文采用克里金代理模型来替代昂贵的仿真，从而可以使用蒙特卡罗模拟（MCS）来近似计算设计方案的失效概率。然后，设计了一个 RBDO 指导的 LLM 提示，动态地向 LLM 提供关键信息，从而能够快速生成满足可靠性约束并提高设计效率的高质量设计点。以 LLM 作为设计生成器，RBDO 是一个迭代过程，旨在获得性能更优的可行设计方案。本文利用 Deepseek-V3 模型，通过三个案例研究来验证所提出的方法在解决可靠性驱动设计（RBDO）问题方面的性能。结果表明，所提出的基于 LLM 的生成式 RBDO 方法能够成功识别满足可靠性约束的可行解，并且与传统遗传算法相比，其收敛速度相当。
+
+## 方法示意图
+- LLM-RBDO 过程示意图：
+  - ![LLM-RBDO Overview](Overview.png)
 
 ## 目录结构
 - `Case_Study1/`：论文案例一（二维数学案例）。
@@ -45,7 +52,8 @@
 
 
 ## 论文与引用
-- 本项目的技术细节与实验结果请参考 `article.pdf`。如需学术引用，请使用论文中的推荐引用格式。
+- 本项目的技术细节与实验结果请参考已发表论文：
+  - Jiang, Z., Gao, S., Tang, Q., Wang, Z., Liu, Y., Huang, H. (2026). Generative Reliability-Based Design Optimization Using In-Context Learning Capabilities of Large Language Models. ASME Journal of Mechanical Design, 148(3): 031705. 链接：https://asmedigitalcollection.asme.org/mechanicaldesign/article-abstract/148/3/031705/1221729/Generative-Reliability-Based-Design-Optimization?redirectedFrom=fulltext
 
 ## 许可与致谢
 - 许可：根据你的论文与项目实际选择（如需开源许可证，可补充 MIT/Apache-2.0 等）。
