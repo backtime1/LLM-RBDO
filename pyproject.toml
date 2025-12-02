@@ -1,0 +1,21 @@
+[project]
+name = "LLMRBDO"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "ansys-fluent-core",
+    "ansys-geometry-core",
+    "colorama",
+    "geatpy",
+    "matplotlib",
+    "openai",
+    "pandas",
+    "pydoe",
+    "scikit-learn",
+]
+[tool.uv.sources]
+geatpy = { url = "https://github.com/geatpy-dev/geatpy/releases/download/v2.7.0/geatpy-2.7.0-cp312-cp312-win_amd64.whl" }
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+

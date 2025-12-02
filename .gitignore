@@ -1,0 +1,6 @@
+# Exclude local virtual env
+.venv/
+
+# Exclude local secrets
+LLM-RBDO-API KEY.txt
+
