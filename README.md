@@ -56,5 +56,6 @@ Large language models (LLMs) have demonstrated remarkable in-context learning (I
   - Jiang, Z., Gao, S., Tang, Q., Wang, Z., Liu, Y., Huang, H. (2026). Generative Reliability-Based Design Optimization Using In-Context Learning Capabilities of Large Language Models. ASME Journal of Mechanical Design, 148(3): 031705. 链接：https://asmedigitalcollection.asme.org/mechanicaldesign/article-abstract/148/3/031705/1221729/Generative-Reliability-Based-Design-Optimization?redirectedFrom=fulltext
 
 ## 许可与致谢
-- 许可：根据你的论文与项目实际选择（如需开源许可证，可补充 MIT/Apache-2.0 等）。
-- 感谢 Ansys 提供的几何与仿真平台，以及相关 Python API。
+- 许可：本仓库内容（代码、图片与文稿片段）仅用于论文阅览与学术交流，禁止用于任何商业用途、专利申请或作为商业产品的一部分分发；除法律允许的合理使用外，保留所有权利。
+- 若需更广泛的学术使用或合作，请先联系作者取得书面授权。
+- 致谢：感谢 Ansys 提供的几何与仿真平台，以及相关 Python API。
