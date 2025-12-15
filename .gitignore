@@ -2,6 +2,5 @@
 .venv/
 
 # Exclude local secrets
-LLM-RBDO-API KEY.txt
 .env
 
