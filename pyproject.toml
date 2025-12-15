@@ -12,6 +12,7 @@ dependencies = [
     "openai",
     "pandas",
     "pydoe",
+    "python-dotenv",
     "scikit-learn",
 ]
 [tool.uv.sources]

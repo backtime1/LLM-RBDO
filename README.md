@@ -38,6 +38,7 @@ Large language models (LLMs) have demonstrated remarkable in-context learning (I
     - `pyproject.toml:17-18` 中 `geatpy` 的轮子链接，替换为对应 Python 版本的轮子。可在 `https://github.com/geatpy-dev/geatpy/releases/tag/v2.7.0` 查找匹配你版本的平台与 ABI（示例当前使用：`geatpy-2.7.0-cp312-cp312-win_amd64.whl`）。
 - 步骤 4：LLM API 配置
   - 建议在系统环境中设置：`OPENAI_API_KEY`、`SILICONFLOW_API_KEY`、`DEEPSEEK_API_KEY`（可选 `OPENAI_BASE_URL`、`SILICONFLOW_BASE_URL`、`DEEPSEEK_BASE_URL`）。
+  - 也可以创建 `.env` 文件来存储这些密钥（参考 `.env.example` 文件）。
   - 如需自定义或切换供应商逻辑，可编辑 `Scripts/api_client.py`；请勿在代码中硬编码密钥，保持密钥在环境变量或本地安全存储。
 
 ## 快速开始（案例 1）
