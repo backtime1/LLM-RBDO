@@ -30,6 +30,7 @@ def generate_new_point_with_llm(messages, best_point_message, temperature, top_p
     - max_tokens: 生成长度上限
     - model: 模型名称
     - template_path: 提示模板路径
+    - print_prompt: 是否打印提示信息
 
     返回：
     - numpy.ndarray，新生成的连续空间设计点（形如 [x1, x2, ...]）
@@ -54,7 +55,7 @@ def generate_new_point_with_llm(messages, best_point_message, temperature, top_p
     tpl = tpl.replace("<<OUTPUT_SCHEMA>>", schema)
     full_prompt = tpl
     if print_prompt:
-        print(full_prompt)
+        print(f"LLM Prompt:\n{full_prompt}")
     try:
         response = client.chat.completions.create(
             model=model,
