@@ -55,7 +55,9 @@ def generate_new_point_with_llm(messages, best_point_message, temperature, top_p
     tpl = tpl.replace("<<OUTPUT_SCHEMA>>", schema)
     full_prompt = tpl
     if print_prompt:
-        print(f"LLM Prompt:\n{full_prompt}")
+        print("\n---LLM Prompt---")
+        print(full_prompt)
+        print("---LLM Prompt End---\n")
     try:
         response = client.chat.completions.create(
             model=model,
@@ -169,9 +171,7 @@ def optimize_with_llm(initial_point, reliability_target, max_iterations, stagnat
 
     for iteration in range(max_iterations):
         actual_iterations = iteration + 1
-        print(f"第 {iteration + 1} 次迭代，最优点：{best_point}，最优成本：{best_cost},最优点的惩罚值：{best_penalty}")
-        if verbose:
-            print("最优点可靠性:", best_reliabilities)
+        print(f"第 {iteration + 1} 次迭代，最优点：{best_point}，最优成本：{best_cost}，最优点的惩罚值：{best_penalty}, 最优点的可靠性：{best_reliabilities}")
         # 将连续空间点映射到整数编码，便于提示模板对齐
         mapped_current_point = map_float_to_int_array(
             current_point.tolist(),
