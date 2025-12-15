@@ -3,14 +3,21 @@ import geatpy as ea
 from matplotlib import rcParams
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
-
+import os
 # 目标函数
 def cost(x):
     x1, x2 = x
     return x1 + x2
 
-x = np.genfromtxt(r"E:/LLM-RBDO/Case_Study1/multy_cons_2D.csv.", delimiter=",")
-
+# ==============================================================================
+#                 模型训练
+# ==============================================================================
+# 导入数据
+csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "multy_cons_2D.csv"))
+try:
+    x = np.genfromtxt(csv_path, delimiter=",")
+except OSError:
+    raise FileNotFoundError(f"CSV file not found: {csv_path}")
 data = np.array(x)
 x_train = data[1:, :-3]
 y_train1 = data[1:, -3]
@@ -18,12 +25,12 @@ y_train2 = data[1:, -2]
 y_train3 = data[1:, -1]
 
 # 定义高斯过程回归的核函数
-kernel = C(0.1, (0.001, 1e8)) * RBF(0.1, (1e-5, 1e8))
+kernel = C(1.0, (1e-5, 1e8)) * RBF(1.0, (1e-5, 1e8))
 
 # 创建高斯过程回归模型并进行训练
-reg1 = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=50)
-reg2 = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=50)
-reg3 = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=50)
+reg1 = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=100, normalize_y=True)
+reg2 = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=100, normalize_y=True)
+reg3 = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=100, normalize_y=True)
 
 # 拟合模型
 reg1.fit(x_train, y_train1)

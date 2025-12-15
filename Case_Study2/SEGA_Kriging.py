@@ -3,13 +3,20 @@ import geatpy as ea
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
 from sklearn.preprocessing import StandardScaler
-
+import os
+# ==============================================================================
+#                 模型训练
+# ==============================================================================
+# 导入数据
 scaler = StandardScaler()
-x = np.genfromtxt(r"E:/llm_for_mechanic_design/llm_for_mechanic_design/car_crash.csv", delimiter=",")
-
+csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "car_crash.csv"))
+try:
+    x = np.genfromtxt(csv_path, delimiter=",")
+except OSError:
+    raise FileNotFoundError(f"CSV file not found: {csv_path}")
 data = np.array(x)
 x_train = data[1:, :-10]
-scaler_x = StandardScaler()  # 或者 MinMaxScaler()
+scaler_x = StandardScaler()  
 x_train_scaled = scaler_x.fit_transform(x_train)
 y_train1 = data[1:, -10]
 y_train2 = data[1:, -9]
@@ -23,7 +30,7 @@ y_train9 = data[1:, -2]
 y_train10 = data[1:, -1]
 
 # 定义高斯过程回归的核函数
-kernel = C(0.1, (0.001, 1e11)) * RBF(0.1, (1e-6, 1e11))
+kernel = C(0.1, (0.001, 1e11)) * RBF(0.1, (1e-5, 1e11))
 
 # 创建高斯过程回归模型并进行训练
 reg1 = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=50)
